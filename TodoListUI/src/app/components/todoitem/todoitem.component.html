@@ -1,0 +1,38 @@
+<div *ngIf="todoList" class="todoitems-component" #todoItemsHtmlComponent>
+
+  <div class="card text-white bg-info mb-3">
+    <h2 class="card-header">{{todoList.name}}</h2>
+    <div class="card-body">
+      <h5>Add a new todo item</h5>
+      <form class="input-group mb-3" #formAddTodoItem=ngForm (ngSubmit)=submitTodoItem()>
+        <div class="input-group-prepend">
+          <span class="input-group-text">#{{todoItemCurrent.id}}</span>
+        </div>
+        <input type=text class="form-control" id="name" required [(ngModel)]="todoItemCurrent.name"
+               name="name">
+        <div class="input-group-append">
+          <button class="btn btn-primary btn-block">
+            Submit
+          </button>
+        </div>
+      </form>
+
+      <hr>
+
+      <h5>My todo items</h5>
+      <div class="list-group todoitems">
+        <a *ngFor="let todoitem of todoItems" href="#" class="list-group-item list-group-item-action">
+          #{{ todoitem.id }} - {{ todoitem.name }}
+          <button class="btn btn-primary float-right mx-1"
+                  (click)="toUpdateTodoItem(todoitem); $event.stopPropagation()">Update
+          </button>
+          <button class="btn btn-danger float-right mx-1" (click)="deleteTodoItem(todoitem); $event.stopPropagation()">
+            Delete
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+
+
+</div>

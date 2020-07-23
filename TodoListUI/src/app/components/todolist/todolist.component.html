@@ -1,0 +1,43 @@
+<div class="todolists-component row">
+  <div class="col-md-6">
+    <div class="card border-info">
+      <div class="card-header">My todo lists</div>
+
+      <div class="card-body text-info">
+        <h5>Add a new todo list</h5>
+        <form class="input-group mb-3" #formAddTodoList=ngForm (ngSubmit)=submitTodoList()>
+          <div class="input-group-prepend">
+            <span class="input-group-text">#{{todoListCurrent.id}}</span>
+          </div>
+          <input type=text class="form-control" id="name" required [(ngModel)]="todoListCurrent.name"
+                 name="name">
+          <div class="input-group-append">
+            <button class="btn btn-primary btn-block">
+              Submit
+            </button>
+          </div>
+        </form>
+
+        <hr>
+
+        <div class="list-group todolists">
+          <a *ngFor="let todolist of todoLists" href="#"
+             class="list-group-item list-group-item-action list-group-item-info"
+             (click)="selectTodoList(todolist)"
+             [ngClass]="{'active' : todoListSelected != null && todolist.id === todoListSelected.id}">
+            #{{ todolist.id }} - {{ todolist.name }}
+            <button class="btn btn-primary float-right mx-1"
+                    (click)="toUpdateTodoList(todolist); $event.stopPropagation()">Update
+            </button>
+            <button class="btn btn-danger float-right mx-1"
+                    (click)="deleteTodoList(todolist); $event.stopPropagation()">
+              Delete
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-todoitem class="col-md-6" [_todoList]="todoListSelected"></app-todoitem>
+</div>

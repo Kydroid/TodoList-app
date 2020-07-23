@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  height: 100vh;
+  padding: 0;
+}
+
+#main-container {
+  max-width: 1200px;
+}
+
+header.header {
+  height: 120px;
+  text-align: center;
+  line-height: 80px;
+  background: linear-gradient(#bee5eb, #f8f9fa);
+}
+
+h1 {
+  display: inline-block;
+  color: #111;
+  font-family: "Arial Black", 'Helvetica Neue', sans-serif;
+  font-size: 2em;
+  font-weight: bold;
+}
+
